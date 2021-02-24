@@ -21,6 +21,9 @@ class DecimalToRoman
         if($valor_a_comprobar == 50){
             return "L";
         }
+        if($valor_a_comprobar == 100){
+            return "C";
+        }
 
 
     }
