@@ -92,17 +92,6 @@ class DecimalToRomanTest extends TestCase
         $this->assertEquals("M", $result);
     }
 
-    /**
-     * @test
-     */
-    public function encontrar_numero_max_con_romano()
-    {
-        $DecimalToRoman = new DecimalToRoman();
-
-        $result = $DecimalToRoman->devuelveMax(2300);
-
-        $this->assertEquals(1000, $result);
-    }
 
     /**
      * @test
@@ -111,7 +100,7 @@ class DecimalToRomanTest extends TestCase
     {
         $DecimalToRoman = new DecimalToRoman();
 
-        $result = $DecimalToRoman->devuelveMax(2300);
+        $result = $DecimalToRoman->devuelveRomano(2300);
 
         $this->assertEquals("M", $result);
     }
@@ -140,17 +129,6 @@ class DecimalToRomanTest extends TestCase
         $this->assertEquals(500, $result);
     }
 
-    /**
-     * @test
-     */
-    public function llega_hasta_0()
-    {
-        $DecimalToRoman = new DecimalToRoman();
-
-        $result = $DecimalToRoman->metodo1(1500);
-
-        $this->assertEquals(0, $result);
-    }
 
     /**
      * @test
