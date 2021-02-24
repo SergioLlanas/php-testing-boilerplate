@@ -21,7 +21,15 @@ class DecimalToRomanTest extends TestCase
         $this->assertEquals("VIII", $result);
     }
 
+    /**
+     * @test
+     */
+    public function separa_numero_bien()
+    {
+        $DecimalToRoman = new DecimalToRoman();
 
+        $result = $DecimalToRoman->separa_numero(5236);
 
-
+        $this->assertEquals([5,2,3,6], $result);
+    }
 }

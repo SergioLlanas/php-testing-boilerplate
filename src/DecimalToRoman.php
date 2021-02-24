@@ -115,4 +115,15 @@ class DecimalToRoman
         }
     }
 
+    public function separa_numero(int $int)
+    {
+        $numeros = array();
+        while($int != 0){
+        $numeros[] = $int % 10;
+        $int = intval($int/10); //Si dividimos 1234 / 10 nos da 123.4, pero queremos que no haya decimales. intval lo que hace es quitarle la parte decimal.
+        }
+        $numeros = array_reverse($numeros);
+        return $numeros;
+    }
+
 }
