@@ -27,6 +27,9 @@ class DecimalToRoman
         if($valor_a_comprobar == 500){
             return "D";
         }
+        if($valor_a_comprobar == 1000){
+            return "M";
+        }
 
 
 

@@ -80,6 +80,18 @@ class DecimalToRomanTest extends TestCase
         $this->assertEquals("D", $result);
     }
 
+    /**
+     * @test
+     */
+    public function si_es_1000_devuelve_M()
+    {
+        $DecimalToRoman = new DecimalToRoman();
+
+        $result = $DecimalToRoman->devuelveRomano(1000);
+
+        $this->assertEquals("M", $result);
+    }
+
 
 
 }
