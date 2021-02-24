@@ -15,6 +15,10 @@ class DecimalToRoman
         if($valor_a_comprobar == 5){
             return "V";
         }
+        if($valor_a_comprobar == 10){
+            return "X";
+        }
+
 
     }
 }
