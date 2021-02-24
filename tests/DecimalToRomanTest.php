@@ -104,6 +104,18 @@ class DecimalToRomanTest extends TestCase
         $this->assertEquals(1000, $result);
     }
 
+    /**
+     * @test
+     */
+    public function encontrar_numero_max_con_romano_y_devuelve_el_romano()
+    {
+        $DecimalToRoman = new DecimalToRoman();
+
+        $result = $DecimalToRoman->devuelveMax(2300);
+
+        $this->assertEquals("M", $result);
+    }
+
 
 
 }
