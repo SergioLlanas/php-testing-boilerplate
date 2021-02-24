@@ -38,22 +38,22 @@ class DecimalToRoman
         if($valor_usuario == 1 || ($valor_usuario>1 && $valor_usuario<5)){
             return "I";
         }
-        if($valor_usuario>5 && $valor_usuario<10){
+        if($valor_usuario == 5 || ($valor_usuario>5 && $valor_usuario<10)){
             return "V";
         }
-        if($valor_usuario>10 && $valor_usuario<50){
+        if($valor_usuario == 10 || ($valor_usuario>10 && $valor_usuario<50)){
             return "X";
         }
-        if($valor_usuario>50 && $valor_usuario<100){
+        if($valor_usuario == 50 || ($valor_usuario>50 && $valor_usuario<100)){
             return "L";
         }
-        if($valor_usuario>100 && $valor_usuario<500){
+        if($valor_usuario == 100 || ($valor_usuario>100 && $valor_usuario<500)){
             return "C";
         }
-        if($valor_usuario>500 && $valor_usuario<1000){
+        if($valor_usuario == 500 || ($valor_usuario>500 && $valor_usuario<1000)){
             return "D";
         }
-        if($valor_usuario>1000){
+        if($valor_usuario == 1000 || $valor_usuario>1000){
             return "M";
         }
     }
