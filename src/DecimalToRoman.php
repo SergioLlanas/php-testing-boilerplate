@@ -35,5 +35,12 @@ class DecimalToRoman
 
     }
 
+    /*Para decidir si uso esta forma o la otra utilizo:
+    - cogo el siguiente mas pequeño, si es mayor que ese mas tres unidades del siguiente mas pequeño metodo dos, sino metodo 1.
+    -ejemplo:
+        Si es el 9, el mas siguiente es 5, como es mayor que 8 (5 mas 3 unidades de 1 que es el siguiente mas peqeño), uso el metodo dos.
+        Si es el 7, cogo el 5 como es menor que 8, metodo 1, por tanto escribo el 5, resto 7-5, repito el proceso, ahora tengo un 2, tengo el 2,
+        el mas pequeño es el 1, metodo 1, imprimo el q, lo resto 2-1=1, repito otra vez y finalmente habre imprimido VII.
+    */
 
 }
