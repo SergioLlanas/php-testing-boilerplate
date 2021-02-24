@@ -24,12 +24,12 @@ class DecimalToRomanTest extends TestCase
     /**
      * @test
      */
-    public function separa_numero_bien()
+    public function separa_numero_al_reves_bien()
     {
         $DecimalToRoman = new DecimalToRoman();
 
         $result = $DecimalToRoman->separa_numero(5236);
 
-        $this->assertEquals([5,2,3,6], $result);
+        $this->assertEquals([6,3,2,5], $result);
     }
 }
