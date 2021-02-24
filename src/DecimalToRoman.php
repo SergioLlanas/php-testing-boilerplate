@@ -34,4 +34,28 @@ class DecimalToRoman
 
 
     }
+
+    public function devuelveMax(int $numero_usuario)
+    {
+        if($numero_usuario<5){
+            return 1;
+        }
+        if($numero_usuario<10){
+            return 5;
+        }
+        if($numero_usuario<50){
+            return 10;
+        }
+        if($numero_usuario<100){
+            return 50;
+        }
+        if($numero_usuario<500){
+            return 100;
+        }
+        if($numero_usuario<1000){
+            return 500;
+        }
+        return 1000;
+
+    }
 }
