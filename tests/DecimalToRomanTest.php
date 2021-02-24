@@ -52,7 +52,7 @@ class DecimalToRomanTest extends TestCase
     {
         $DecimalToRoman = new DecimalToRoman();
 
-        $result = $DecimalToRoman->devuelveRomano(10);
+        $result = $DecimalToRoman->devuelveRomano(50);
 
         $this->assertEquals("L", $result);
     }
@@ -67,6 +67,17 @@ class DecimalToRomanTest extends TestCase
         $result = $DecimalToRoman->devuelveRomano(100);
 
         $this->assertEquals("C", $result);
+    }
+    /**
+     * @test
+     */
+    public function si_es_500_devuelve_D()
+    {
+        $DecimalToRoman = new DecimalToRoman();
+
+        $result = $DecimalToRoman->devuelveRomano(500);
+
+        $this->assertEquals("D", $result);
     }
 
 

@@ -24,6 +24,10 @@ class DecimalToRoman
         if($valor_a_comprobar == 100){
             return "C";
         }
+        if($valor_a_comprobar == 500){
+            return "D";
+        }
+
 
 
     }
