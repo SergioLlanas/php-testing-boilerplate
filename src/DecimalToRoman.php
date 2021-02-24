@@ -18,6 +18,9 @@ class DecimalToRoman
         if($valor_a_comprobar == 10){
             return "X";
         }
+        if($valor_a_comprobar == 50){
+            return "L";
+        }
 
 
     }
