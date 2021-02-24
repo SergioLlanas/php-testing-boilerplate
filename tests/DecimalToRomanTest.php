@@ -152,6 +152,18 @@ class DecimalToRomanTest extends TestCase
         $this->assertEquals(0, $result);
     }
 
+    /**
+     * @test
+     */
+    public function muestra_pertenecientes_metodo_1()
+    {
+        $DecimalToRoman = new DecimalToRoman();
+
+        $result = $DecimalToRoman->metodo1(8);
+
+        $this->assertEquals("VIII", $result);
+    }
+
 
 
 

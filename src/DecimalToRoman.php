@@ -32,6 +32,32 @@ class DecimalToRoman
         }
     }
 
+
+    public function siguiente_mas_pequeño_romano(int $valor_usuario)
+    {
+        if($valor_usuario == 1 || ($valor_usuario>1 && $valor_usuario<5)){
+            return "I";
+        }
+        if($valor_usuario>5 && $valor_usuario<10){
+            return "V";
+        }
+        if($valor_usuario>10 && $valor_usuario<50){
+            return "X";
+        }
+        if($valor_usuario>50 && $valor_usuario<100){
+            return "L";
+        }
+        if($valor_usuario>100 && $valor_usuario<500){
+            return "C";
+        }
+        if($valor_usuario>500 && $valor_usuario<1000){
+            return "D";
+        }
+        if($valor_usuario>1000){
+            return "M";
+        }
+    }
+
     //Añadir que cuando ya es 0 acabe.
     public function restar(int $valor_usuario)
     {
@@ -70,10 +96,12 @@ class DecimalToRoman
     */
     public function metodo1(int $int)
     {
+        $cadena = "";
         while($int>0){
+            $cadena = $cadena . $this->siguiente_mas_pequeño_romano($int);
             $int = $this->restar($int);
         }
-        return 0;
+        return $cadena;
     }
 
 }
