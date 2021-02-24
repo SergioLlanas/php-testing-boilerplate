@@ -32,4 +32,17 @@ class DecimalToRomanTest extends TestCase
 
         $this->assertEquals([6,3,2,5], $result);
     }
+
+    /**
+     * @test
+     */
+    public function metodo2_bien()
+    {
+        $DecimalToRoman = new DecimalToRoman();
+
+        $result = $DecimalToRoman->metodo2(14);
+
+        $this->assertEquals("XIV", $result);
+    }
+
 }

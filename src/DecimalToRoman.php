@@ -111,7 +111,7 @@ class DecimalToRoman
         if($original<(1+$sig+(3*$this->siguiente_mas_pequeño($sig)))){
             return $this->metodo1($original);
         } else{
-            return "Otro metodo";
+            return $this->metodo2($original);
         }
     }
 
@@ -124,6 +124,23 @@ class DecimalToRoman
         }
         //$numeros = array_reverse($numeros);
         return $numeros;
+    }
+
+    public function metodo2(int $int)
+    {
+        if($int==4){
+            return "IV";
+        }else if($int == 9){
+            return "IX";
+        } else{
+            $nums = $this->separa_numero($int);
+            $cadena = "";
+            for ($i = 0; $i < sizeof($nums); $i++) {
+                $aux = $this->elige(pow(10, $i) * $nums[$i]);
+                $cadena = $aux . $cadena;
+            }
+            return $cadena;
+        }
     }
 
 }
