@@ -149,9 +149,9 @@ class DecimalToRomanTest extends TestCase
     {
         $DecimalToRoman = new DecimalToRoman();
 
-        $result = $DecimalToRoman->elige(8);
+        $result = $DecimalToRoman->elige(526);
 
-        $this->assertEquals("VIII", $result);
+        $this->assertEquals("DXXVI", $result);
     }
 
 

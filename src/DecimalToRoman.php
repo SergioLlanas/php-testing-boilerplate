@@ -60,22 +60,22 @@ class DecimalToRoman
 
     public function siguiente_mas_pequeño(int $valor_usuario)
     {
-        if($valor_usuario == 1 || ($valor_usuario>1 && $valor_usuario<5)){
+        if($valor_usuario == 1 || ($valor_usuario>1 && $valor_usuario<6)){
             return 1;
         }
-        if($valor_usuario>5 && $valor_usuario<10){
+        if($valor_usuario>5 && $valor_usuario<11){
             return 5;
         }
-        if($valor_usuario>10 && $valor_usuario<50){
+        if($valor_usuario>10 && $valor_usuario<51){
             return 10;
         }
-        if($valor_usuario>50 && $valor_usuario<100){
+        if($valor_usuario>50 && $valor_usuario<101){
             return 50;
         }
-        if($valor_usuario>100 && $valor_usuario<500){
+        if($valor_usuario>100 && $valor_usuario<501){
             return 100;
         }
-        if($valor_usuario>500 && $valor_usuario<1000){
+        if($valor_usuario>500 && $valor_usuario<1001){
             return 500;
         }
         if($valor_usuario>1000){
@@ -134,7 +134,7 @@ class DecimalToRoman
         $original = $int;
         $sig = $this->siguiente_mas_pequeño($int);
         //al sumar 1 al principio es como poner <=, si da 8, ponemos (<9)=(<=8)
-        if($original<(1+$sig+(3*$this->siguiente_mas_pequeño($sig-1)))){ //Le paso sig-1, porque tal y como esta la funcion declarada el 5 no devuelve
+        if($original<(1+$sig+(3*$this->siguiente_mas_pequeño($sig)))){
             return $this->metodo1($original);
         } else{
             return "Otro metodo";
