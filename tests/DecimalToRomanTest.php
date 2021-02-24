@@ -137,7 +137,19 @@ class DecimalToRomanTest extends TestCase
     {
         $DecimalToRoman = new DecimalToRoman();
 
-        $result = $DecimalToRoman->metodo1(8);
+        $result = $DecimalToRoman->metodo1(1001);
+
+        $this->assertEquals("MI", $result);
+    }
+
+    /**
+     * @test
+     */
+    public function elige_bien_el_metodo()
+    {
+        $DecimalToRoman = new DecimalToRoman();
+
+        $result = $DecimalToRoman->elige(8);
 
         $this->assertEquals("VIII", $result);
     }
