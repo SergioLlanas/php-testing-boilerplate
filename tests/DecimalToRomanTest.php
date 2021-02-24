@@ -116,6 +116,18 @@ class DecimalToRomanTest extends TestCase
         $this->assertEquals("M", $result);
     }
 
+    /**
+     * @test
+     */
+    public function si_numero_con_romano_o_mas_pequeño_devolver_numero_con_romano()
+    {
+        $DecimalToRoman = new DecimalToRoman();
+
+        $result = $DecimalToRoman->devuelveRomano(25);
+
+        $this->assertEquals("X", $result);
+    }
+
 
 
 }
