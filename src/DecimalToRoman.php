@@ -30,9 +30,31 @@ class DecimalToRoman
         if($valor_a_comprobar == 1000 || $valor_a_comprobar>1000){
             return "M";
         }
+    }
 
-
-
+    public function restar(int $valor_usuario)
+    {
+        if($valor_usuario == 1 || ($valor_usuario>1 && $valor_usuario<5)){
+            return $valor_usuario-1;
+        }
+        if($valor_usuario == 5 || ($valor_usuario>5 && $valor_usuario<10)){
+            return $valor_usuario-5;
+        }
+        if($valor_usuario == 10 || ($valor_usuario>10 && $valor_usuario<50)){
+            return $valor_usuario-10;
+        }
+        if($valor_usuario == 50 || ($valor_usuario>50 && $valor_usuario<100)){
+            return $valor_usuario-50;
+        }
+        if($valor_usuario == 100 || ($valor_usuario>100 && $valor_usuario<500)){
+            return $valor_usuario-100;
+        }
+        if($valor_usuario == 500 || ($valor_usuario>500 && $valor_usuario<1000)){
+            return $valor_usuario-500;
+        }
+        if($valor_usuario == 1000 || $valor_usuario>1000){
+            return $valor_usuario-1000;
+        }
     }
 
     /*Para decidir si uso esta forma o la otra utilizo:

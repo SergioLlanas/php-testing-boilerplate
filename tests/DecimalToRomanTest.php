@@ -128,6 +128,18 @@ class DecimalToRomanTest extends TestCase
         $this->assertEquals("X", $result);
     }
 
+    /**
+     * @test
+     */
+    public function resta_siguiente_MaxMin()
+    {
+        $DecimalToRoman = new DecimalToRoman();
+
+        $result = $DecimalToRoman->restar(1500);
+
+        $this->assertEquals(500, $result);
+    }
+
 
 
 }
