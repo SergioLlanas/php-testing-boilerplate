@@ -140,6 +140,19 @@ class DecimalToRomanTest extends TestCase
         $this->assertEquals(500, $result);
     }
 
+    /**
+     * @test
+     */
+    public function llega_hasta_0()
+    {
+        $DecimalToRoman = new DecimalToRoman();
+
+        $result = $DecimalToRoman->metodo1(1500);
+
+        $this->assertEquals(0, $result);
+    }
+
+
 
 
 }

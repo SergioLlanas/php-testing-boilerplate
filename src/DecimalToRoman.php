@@ -32,8 +32,12 @@ class DecimalToRoman
         }
     }
 
+    //Añadir que cuando ya es 0 acabe.
     public function restar(int $valor_usuario)
     {
+        if($valor_usuario<1){
+            return 0;
+        }
         if($valor_usuario == 1 || ($valor_usuario>1 && $valor_usuario<5)){
             return $valor_usuario-1;
         }
@@ -64,5 +68,12 @@ class DecimalToRoman
         Si es el 7, cogo el 5 como es menor que 8, metodo 1, por tanto escribo el 5, resto 7-5, repito el proceso, ahora tengo un 2, tengo el 2,
         el mas pequeño es el 1, metodo 1, imprimo el q, lo resto 2-1=1, repito otra vez y finalmente habre imprimido VII.
     */
+    public function metodo1(int $int)
+    {
+        while($int>0){
+            $int = $this->restar($int);
+        }
+        return 0;
+    }
 
 }
