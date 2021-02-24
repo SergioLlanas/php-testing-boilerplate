@@ -16,9 +16,23 @@ class DecimalToRomanTest extends TestCase
     {
         $DecimalToRoman = new DecimalToRoman();
 
-        $result = $DecimalToRoman->devuelveI(1);
+        $result = $DecimalToRoman->devuelveRomano(1);
 
         $this->assertEquals("I", $result);
     }
+
+    /**
+     * @test
+     */
+    public function si_es_5_devuelve_V()
+    {
+        $DecimalToRoman = new DecimalToRoman();
+
+        $result = $DecimalToRoman->devuelveRomano(5);
+
+        $this->assertEquals("V", $result);
+    }
+
+
 
 }
