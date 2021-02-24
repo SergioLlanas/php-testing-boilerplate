@@ -7,7 +7,7 @@ namespace Deg540\PHPTestingBoilerplate;
 class DecimalToRoman
 {
 
-    public function devuelveRomano(int $valor_a_comprobar)
+    private function devuelveRomano(int $valor_a_comprobar)
     {
         if($valor_a_comprobar == 1 || ($valor_a_comprobar>1 && $valor_a_comprobar<5)){
             return "I";
@@ -33,7 +33,7 @@ class DecimalToRoman
     }
 
 
-    public function siguiente_mas_pequeño_romano(int $valor_usuario)
+    private function siguiente_mas_pequeño_romano(int $valor_usuario)
     {
         if($valor_usuario == 1 || ($valor_usuario>1 && $valor_usuario<5)){
             return "I";
@@ -58,7 +58,7 @@ class DecimalToRoman
         }
     }
 
-    public function siguiente_mas_pequeño(int $valor_usuario)
+    private function siguiente_mas_pequeño(int $valor_usuario)
     {
         if($valor_usuario == 1 || ($valor_usuario>1 && $valor_usuario<6)){
             return 1;
@@ -84,7 +84,7 @@ class DecimalToRoman
     }
 
     //Añadir que cuando ya es 0 acabe.
-    public function restar(int $valor_usuario)
+    private function restar(int $valor_usuario)
     {
         if($valor_usuario<1){
             return 0;
@@ -119,7 +119,7 @@ class DecimalToRoman
         Si es el 7, cogo el 5 como es menor que 8, metodo 1, por tanto escribo el 5, resto 7-5, repito el proceso, ahora tengo un 2, tengo el 2,
         el mas pequeño es el 1, metodo 1, imprimo el q, lo resto 2-1=1, repito otra vez y finalmente habre imprimido VII.
     */
-    public function metodo1(int $int)
+    private function metodo1(int $int)
     {
         $cadena = "";
         while($int>0){
