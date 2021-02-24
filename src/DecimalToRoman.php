@@ -7,8 +7,10 @@ namespace Deg540\PHPTestingBoilerplate;
 class DecimalToRoman
 {
 
-    public function devuelveI(int $int)
+    public function devuelveI(int $valor_a_comprobar)
     {
-        return "I";
+        if($valor_a_comprobar == 1){
+            return "I";
+        }
     }
 }

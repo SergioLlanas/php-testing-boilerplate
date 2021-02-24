@@ -12,7 +12,7 @@ class DecimalToRomanTest extends TestCase
     /**
      * @test
      */
-    public function devuelve_I_bien()
+    public function si_es_1_devuelve_I()
     {
         $DecimalToRoman = new DecimalToRoman();
 
@@ -20,4 +20,5 @@ class DecimalToRomanTest extends TestCase
 
         $this->assertEquals("I", $result);
     }
+
 }
