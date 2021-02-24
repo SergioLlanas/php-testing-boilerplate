@@ -35,27 +35,5 @@ class DecimalToRoman
 
     }
 
-    public function devuelveMax(int $numero_usuario)
-    {
-        if($numero_usuario<5){
-            return "I";
-        }
-        if($numero_usuario<10){
-            return "V";
-        }
-        if($numero_usuario<50){
-            return "X";
-        }
-        if($numero_usuario<100){
-            return "L";
-        }
-        if($numero_usuario<500){
-            return "C";
-        }
-        if($numero_usuario<1000){
-            return "D";
-        }
-        return "M";
 
-    }
 }
