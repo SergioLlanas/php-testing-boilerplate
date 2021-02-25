@@ -108,10 +108,12 @@ class DecimalToRoman
         $original = $int;
         $sig = $this->siguiente_mas_pequeño($int);
         //al sumar 1 al principio es como poner <=, si da 8, ponemos (<9)=(<=8)
-        if($original<(1+$sig+(3*$this->siguiente_mas_pequeño($sig)))){
-            return $this->metodo1($original);
-        } else{
+        if($original>($sig+(3*$this->siguiente_mas_pequeño($sig)))){
             return $this->metodo2($original);
+        } else if($original == 4){
+            return $this->metodo2($original);
+        }else{
+            return $this->metodo1($original);
         }
     }
 
@@ -132,6 +134,10 @@ class DecimalToRoman
             return "IV";
         }else if($int == 9){
             return "IX";
+        } else if($int == 40){
+            return "XL";
+        } else if($int == 90){
+            return "XC";
         } else{
             $nums = $this->separa_numero($int);
             $cadena = "";

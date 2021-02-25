@@ -40,9 +40,9 @@ class DecimalToRomanTest extends TestCase
     {
         $DecimalToRoman = new DecimalToRoman();
 
-        $result = $DecimalToRoman->metodo2(14);
+        $result = $DecimalToRoman->metodo2(40);
 
-        $this->assertEquals("XIV", $result);
+        $this->assertEquals("XL", $result);
     }
 
 }
