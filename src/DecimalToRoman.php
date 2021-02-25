@@ -7,52 +7,52 @@ namespace Deg540\PHPTestingBoilerplate;
 class DecimalToRoman
 {
 
-        private function siguiente_mas_pequeño_romano(int $valor_usuario)
+    private function siguiente_mas_pequeño_romano(int $valor_usuario)
     {
-        if($valor_usuario == 1 || ($valor_usuario>1 && $valor_usuario<5)){
+        if ($valor_usuario == 1 || ($valor_usuario > 1 && $valor_usuario < 5)) {
             return "I";
         }
-        if($valor_usuario == 5 || ($valor_usuario>5 && $valor_usuario<10)){
+        if ($valor_usuario == 5 || ($valor_usuario > 5 && $valor_usuario < 10)) {
             return "V";
         }
-        if($valor_usuario == 10 || ($valor_usuario>10 && $valor_usuario<50)){
+        if ($valor_usuario == 10 || ($valor_usuario > 10 && $valor_usuario < 50)) {
             return "X";
         }
-        if($valor_usuario == 50 || ($valor_usuario>50 && $valor_usuario<100)){
+        if ($valor_usuario == 50 || ($valor_usuario > 50 && $valor_usuario < 100)) {
             return "L";
         }
-        if($valor_usuario == 100 || ($valor_usuario>100 && $valor_usuario<500)){
+        if ($valor_usuario == 100 || ($valor_usuario > 100 && $valor_usuario < 500)) {
             return "C";
         }
-        if($valor_usuario == 500 || ($valor_usuario>500 && $valor_usuario<1000)){
+        if ($valor_usuario == 500 || ($valor_usuario > 500 && $valor_usuario < 1000)) {
             return "D";
         }
-        if($valor_usuario == 1000 || $valor_usuario>1000){
+        if ($valor_usuario == 1000 || $valor_usuario > 1000) {
             return "M";
         }
     }
 
     private function siguiente_mas_pequeño(int $valor_usuario)
     {
-        if($valor_usuario == 1 || ($valor_usuario>1 && $valor_usuario<6)){
+        if ($valor_usuario == 1 || ($valor_usuario > 1 && $valor_usuario < 6)) {
             return 1;
         }
-        if($valor_usuario>5 && $valor_usuario<11){
+        if ($valor_usuario > 5 && $valor_usuario < 11) {
             return 5;
         }
-        if($valor_usuario>10 && $valor_usuario<51){
+        if ($valor_usuario > 10 && $valor_usuario < 51) {
             return 10;
         }
-        if($valor_usuario>50 && $valor_usuario<101){
+        if ($valor_usuario > 50 && $valor_usuario < 101) {
             return 50;
         }
-        if($valor_usuario>100 && $valor_usuario<501){
+        if ($valor_usuario > 100 && $valor_usuario < 501) {
             return 100;
         }
-        if($valor_usuario>500 && $valor_usuario<1001){
+        if ($valor_usuario > 500 && $valor_usuario < 1001) {
             return 500;
         }
-        if($valor_usuario>1000){
+        if ($valor_usuario > 1000) {
             return 1000;
         }
     }
@@ -60,29 +60,29 @@ class DecimalToRoman
     //Añadir que cuando ya es 0 acabe.
     private function restar(int $valor_usuario)
     {
-        if($valor_usuario<1){
+        if ($valor_usuario < 1) {
             return 0;
         }
-        if($valor_usuario == 1 || ($valor_usuario>1 && $valor_usuario<5)){
-            return $valor_usuario-1;
+        if ($valor_usuario == 1 || ($valor_usuario > 1 && $valor_usuario < 5)) {
+            return $valor_usuario - 1;
         }
-        if($valor_usuario == 5 || ($valor_usuario>5 && $valor_usuario<10)){
-            return $valor_usuario-5;
+        if ($valor_usuario == 5 || ($valor_usuario > 5 && $valor_usuario < 10)) {
+            return $valor_usuario - 5;
         }
-        if($valor_usuario == 10 || ($valor_usuario>10 && $valor_usuario<50)){
-            return $valor_usuario-10;
+        if ($valor_usuario == 10 || ($valor_usuario > 10 && $valor_usuario < 50)) {
+            return $valor_usuario - 10;
         }
-        if($valor_usuario == 50 || ($valor_usuario>50 && $valor_usuario<100)){
-            return $valor_usuario-50;
+        if ($valor_usuario == 50 || ($valor_usuario > 50 && $valor_usuario < 100)) {
+            return $valor_usuario - 50;
         }
-        if($valor_usuario == 100 || ($valor_usuario>100 && $valor_usuario<500)){
-            return $valor_usuario-100;
+        if ($valor_usuario == 100 || ($valor_usuario > 100 && $valor_usuario < 500)) {
+            return $valor_usuario - 100;
         }
-        if($valor_usuario == 500 || ($valor_usuario>500 && $valor_usuario<1000)){
-            return $valor_usuario-500;
+        if ($valor_usuario == 500 || ($valor_usuario > 500 && $valor_usuario < 1000)) {
+            return $valor_usuario - 500;
         }
-        if($valor_usuario == 1000 || $valor_usuario>1000){
-            return $valor_usuario-1000;
+        if ($valor_usuario == 1000 || $valor_usuario > 1000) {
+            return $valor_usuario - 1000;
         }
     }
 
@@ -96,7 +96,7 @@ class DecimalToRoman
     private function metodo1(int $int)
     {
         $cadena = "";
-        while($int>0){
+        while ($int > 0) {
             $cadena = $cadena . $this->siguiente_mas_pequeño_romano($int);
             $int = $this->restar($int);
         }
@@ -105,24 +105,46 @@ class DecimalToRoman
 
     public function elige(int $int)
     {
-        $original = $int;
-        $sig = $this->siguiente_mas_pequeño($int);
-        //al sumar 1 al principio es como poner <=, si da 8, ponemos (<9)=(<=8)
-        if($original>($sig+(3*$this->siguiente_mas_pequeño($sig)))){
-            return $this->metodo2($original);
-        } else if($original == 4){
-            return $this->metodo2($original);
-        }else{
-            return $this->metodo1($original);
+        if ($int == 1) {
+            return "I";
+        } else if ($int == 4) {
+            return "IV";
+        }else if ($int == 9) {
+            return "IX";
+        }else if ($int == 5) {
+            return "V";
+        } else if ($int == 10) {
+            return "X";
+        }else if ($int == 40) {
+            return "XL";
+        } else if ($int == 50) {
+            return "L";
+        } else if ($int == 90) {
+            return "XC";
+        }else if ($int == 100) {
+            return "C";
+        } else if ($int == 500) {
+            return "D";
+        } else if ($int == 1000) {
+            return "M";
+        } else {
+            $original = $int;
+            $sig = $this->siguiente_mas_pequeño($int);
+            //al sumar 1 al principio es como poner <=, si da 8, ponemos (<9)=(<=8)
+            if ($original < (1 + $sig + (3 * $this->siguiente_mas_pequeño($sig)))) {
+                return $this->metodo1($original);
+            } else {
+                return $this->metodo2($original);
+            }
         }
     }
 
     public function separa_numero(int $int)
     {
         $numeros = array();
-        while($int != 0){
-        $numeros[] = $int % 10;
-        $int = intval($int/10); //Si dividimos 1234 / 10 nos da 123.4, pero queremos que no haya decimales. intval lo que hace es quitarle la parte decimal.
+        while ($int != 0) {
+            $numeros[] = $int % 10;
+            $int = intval($int / 10); //Si dividimos 1234 / 10 nos da 123.4, pero queremos que no haya decimales. intval lo que hace es quitarle la parte decimal.
         }
         //$numeros = array_reverse($numeros);
         return $numeros;
@@ -130,23 +152,13 @@ class DecimalToRoman
 
     public function metodo2(int $int)
     {
-        if($int==4){
-            return "IV";
-        }else if($int == 9){
-            return "IX";
-        } else if($int == 40){
-            return "XL";
-        } else if($int == 90){
-            return "XC";
-        } else{
-            $nums = $this->separa_numero($int);
-            $cadena = "";
-            for ($i = 0; $i < sizeof($nums); $i++) {
-                $aux = $this->elige(pow(10, $i) * $nums[$i]);
-                $cadena = $aux . $cadena;
-            }
-            return $cadena;
+        $nums = $this->separa_numero($int);
+        $cadena = "";
+        for ($i = 0; $i < sizeof($nums); $i++) {
+            $aux = $this->elige(pow(10, $i) * $nums[$i]);
+            $cadena = $aux . $cadena;
         }
+        return $cadena;
     }
 
 }

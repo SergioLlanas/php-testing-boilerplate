@@ -16,9 +16,9 @@ class DecimalToRomanTest extends TestCase
     {
         $DecimalToRoman = new DecimalToRoman();
 
-        $result = $DecimalToRoman->elige(8);
+        $result = $DecimalToRoman->elige(14);
 
-        $this->assertEquals("VIII", $result);
+        $this->assertEquals("XIV", $result);
     }
 
     /**
@@ -28,9 +28,9 @@ class DecimalToRomanTest extends TestCase
     {
         $DecimalToRoman = new DecimalToRoman();
 
-        $result = $DecimalToRoman->separa_numero(5236);
+        $result = $DecimalToRoman->separa_numero(25);
 
-        $this->assertEquals([6,3,2,5], $result);
+        $this->assertEquals([5,2], $result);
     }
 
     /**
@@ -40,9 +40,21 @@ class DecimalToRomanTest extends TestCase
     {
         $DecimalToRoman = new DecimalToRoman();
 
-        $result = $DecimalToRoman->metodo2(40);
+        $result = $DecimalToRoman->metodo2(8);
 
-        $this->assertEquals("XL", $result);
+        $this->assertEquals("VIII", $result);
+    }
+
+    /**
+     * @test
+     */
+    public function final_bien()
+    {
+        $DecimalToRoman = new DecimalToRoman();
+
+        $result = $DecimalToRoman->elige(2129);
+
+        $this->assertEquals("MMCXXIX", $result);
     }
 
 }
