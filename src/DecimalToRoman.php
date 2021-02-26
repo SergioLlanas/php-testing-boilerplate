@@ -96,13 +96,27 @@ class DecimalToRoman
     private function metodo1(int $int)
     {
         $cadena = "";
-        while ($int > 0) {
-            $cadena = $cadena . $this->siguiente_mas_pequeño_romano($int);
-            $int = $this->restar($int);
+        if($int<10){
+            while ($int > 0) {
+                $cadena = $cadena . $this->siguiente_mas_pequeño_romano($int);
+                $int = $this->restar($int);
+            }
+        } else{
+            $numeros = array();
+            while ($int != 0) {
+                $numeros[] = $int % 10;
+                $int = intval($int / 10); //Si dividimos 1234 / 10 nos da 123.4, pero queremos que no haya decimales. intval lo que hace es quitarle la parte decimal.
+            }
+            //$numeros = array_reverse($numeros);
+            for($i=0;$i<sizeof($numeros);$i++){
+                $cadena = $this->elige(pow(10,$i) *  $numeros[$i]) . $cadena;
+            }
         }
         return $cadena;
     }
 
+
+    //Añadir lo de separar los numeros si son mayores que 10 en este metodo y quitarlo de metodo 2, asi no fallarian numeros como el 129
     public function elige(int $int)
     {
         if ($int == 1) {
@@ -152,13 +166,18 @@ class DecimalToRoman
 
     public function metodo2(int $int)
     {
-        $nums = $this->separa_numero($int);
         $cadena = "";
-        for ($i = 0; $i < sizeof($nums); $i++) {
-            $aux = $this->elige(pow(10, $i) * $nums[$i]);
-            $cadena = $aux . $cadena;
+        $numeros = array();
+        while ($int != 0) {
+            $numeros[] = $int % 10;
+            $int = intval($int / 10); //Si dividimos 1234 / 10 nos da 123.4, pero queremos que no haya decimales. intval lo que hace es quitarle la parte decimal.
+        }
+        //$numeros = array_reverse($numeros);
+        for($i=0;$i<sizeof($numeros);$i++){
+            $cadena = $this->elige(pow(10,$i) *  $numeros[$i]) . $cadena;
         }
         return $cadena;
     }
+
 
 }
