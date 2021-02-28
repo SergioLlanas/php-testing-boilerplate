@@ -171,7 +171,7 @@ class DecimalToRoman
         }
     }
 
-    public function separa_numero(int $int)
+    private function separa_numero(int $int)
     {
         $numeros = array();
         while ($int != 0) {
@@ -182,7 +182,7 @@ class DecimalToRoman
         return $numeros;
     }
 
-    public function metodo2(int $int)
+    private function metodo2(int $int)
     {
         $cadena = "";
         $numeros = $this->separa_numero($int);
