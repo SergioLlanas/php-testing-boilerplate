@@ -52,9 +52,9 @@ class DecimalToRomanTest extends TestCase
     {
         $DecimalToRoman = new DecimalToRoman();
 
-        $result = $DecimalToRoman->elige(149);
+        $result = $DecimalToRoman->elige(160);
 
-        $this->assertEquals("CXLIX", $result);
+        $this->assertEquals("XX", $result);
     }
 
 }

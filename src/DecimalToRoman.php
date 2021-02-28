@@ -141,7 +141,25 @@ class DecimalToRoman
             return "D";
         } else if ($int == 1000) {
             return "M";
-        } else {
+        }else  if($int%10 == 0){
+            $cadena = "";
+            //De esta forma se hacen los multiplos de 10
+            if($int>50 && $int<100){
+                $cadena="L";
+                $int = $int -50;
+            }
+            for($j=0;$j<$int/10;$j++){
+                $cadena=$cadena . "X";
+            }
+            if($int>100){
+                $cadena="C";
+                $int = $int -100;
+                $cadena = $cadena . $this->elige($int);
+            }
+
+
+            return $cadena;
+        }else {
             $original = $int;
             $sig = $this->siguiente_mas_pequeño($int);
             //al sumar 1 al principio es como poner <=, si da 8, ponemos (<9)=(<=8)
@@ -167,11 +185,7 @@ class DecimalToRoman
     public function metodo2(int $int)
     {
         $cadena = "";
-        $numeros = array();
-        while ($int != 0) {
-            $numeros[] = $int % 10;
-            $int = intval($int / 10); //Si dividimos 1234 / 10 nos da 123.4, pero queremos que no haya decimales. intval lo que hace es quitarle la parte decimal.
-        }
+        $numeros = $this->separa_numero($int);
         //$numeros = array_reverse($numeros);
         for($i=0;$i<sizeof($numeros);$i++){
             $cadena = $this->elige(pow(10,$i) *  $numeros[$i]) . $cadena;
