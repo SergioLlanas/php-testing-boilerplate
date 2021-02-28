@@ -40,4 +40,14 @@ class RomanToDecimal
             return 1000;
         }
     }
+
+    public function tipoSumar(string $numeroRomano)
+    {
+        $total = 0;
+        $numSeparado = str_split($numeroRomano);
+        for ($i=count($numSeparado);$i>0;$i--){
+            $total = $total + $this->casos_base($numSeparado[$i-1]);
+        }
+        return $total;
+    }
 }

@@ -26,4 +26,17 @@ class RomanToDecimalTest extends TestCase
         $this->assertEquals(500, $RomanToDecimal->casos_base("D"));
         $this->assertEquals(1000, $RomanToDecimal->casos_base("M"));
     }
+
+
+    /**
+     * @test
+     */
+    public function hace_bien_los_de_tipo_suma(){
+        $RomanToDecimal = new RomanToDecimal();
+
+        //$result = $RomanToDecimal->casos_base("M");
+
+        $this->assertEquals(80, $RomanToDecimal->tipoSumar("LXXX"));
+    }
+
 }
