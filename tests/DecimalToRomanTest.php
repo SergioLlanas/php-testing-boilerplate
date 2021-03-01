@@ -16,9 +16,9 @@ class DecimalToRomanTest extends TestCase
     {
         $DecimalToRoman = new DecimalToRoman();
 
-        $result = $DecimalToRoman->convierteNumero(65);
+        $result = $DecimalToRoman->convierteNumero(123);
 
-        $this->assertEquals("XX", $result);
+        $this->assertEquals("CXXIII", $result);
     }
 
     /**
