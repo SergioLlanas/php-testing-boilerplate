@@ -49,7 +49,21 @@ class RomanToDecimalTest extends TestCase
 
         //$result = $RomanToDecimal->casos_base("M");
 
-        $this->assertEquals(44, $RomanToDecimal->tipoRestar("XLIV"));
+        $this->assertEquals(149, $RomanToDecimal->tipoRestar("CXLIX"));
+    }
+
+    /**
+     * @test
+     */
+    public function elige_bien_el_tipo_y_calcula_decimal(){
+        $RomanToDecimal = new RomanToDecimal();
+
+        //$result = $RomanToDecimal->casos_base("M");
+
+        $this->assertEquals(149, $RomanToDecimal->elige("CXLIX"));
+        $this->assertEquals(49, $RomanToDecimal->elige("XLIX"));
+        $this->assertEquals(87, $RomanToDecimal->elige("LXXXVII"));
+        $this->assertEquals(90, $RomanToDecimal->elige("XC"));
     }
 
 }

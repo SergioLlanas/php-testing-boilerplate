@@ -22,14 +22,8 @@ class RomanToDecimal
         }if($numeroRomano == "X"){
         return 10;
         }
-        if($numeroRomano == "XL"){
-            return 40;
-        }
         if($numeroRomano == "L"){
             return 50;
-        }
-        if($numeroRomano == "XC"){
-            return 90;
         }
         if($numeroRomano == "C"){
             return 100;
@@ -41,8 +35,18 @@ class RomanToDecimal
         }
         $total = 0;
         $numSeparado = str_split($numeroRomano);
+        for ($i=0;$i<count($numSeparado);$i++) {
+            $numSeparado[$i] = $this->elige($numSeparado[$i]);
+        }
         for ($i=count($numSeparado);$i>0;$i--){
-            $total = $total + $this->elige($numSeparado[$i-1]);
+            if($numSeparado[$i-2]<$numSeparado[$i-1]){
+                $total = $total + $numSeparado[$i-1] - $numSeparado[$i-2];
+                echo "total = total + " . $numSeparado[$i-1] . " - " . $numSeparado[$i-2] . " de tipo resta\n";
+                $i--;
+            } else{
+                $total = $total + $numSeparado[$i-1];
+                echo "total = total + " . $numSeparado[$i-1] . " de tipo suman\n";
+            }
         }
         return $total;
     }
@@ -64,7 +68,6 @@ class RomanToDecimal
         for ($i=0;$i<count($numSeparado);$i++) {
             $numSeparado[$i] = $this->elige($numSeparado[$i]);
         }
-        $hay_mayor_tras_menor = [false,0];
         for ($i=0;$i<count($numSeparado);$i++){
             if($numSeparado[$i]<$numSeparado[$i+1]){
                 $total = $total + $numSeparado[$i+1] - $numSeparado[$i];
