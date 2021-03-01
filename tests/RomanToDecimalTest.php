@@ -38,7 +38,7 @@ class RomanToDecimalTest extends TestCase
 
         //$result = $RomanToDecimal->casos_base("M");
 
-        $this->assertEquals(20, $RomanToDecimal->tipoSumar("XX"));
+        $this->assertEquals(20, $RomanToDecimal->elige("XX"));
     }
 
     /**
@@ -49,7 +49,7 @@ class RomanToDecimalTest extends TestCase
 
         //$result = $RomanToDecimal->casos_base("M");
 
-        $this->assertEquals(149, $RomanToDecimal->tipoRestar("CXLIX"));
+        $this->assertEquals(149, $RomanToDecimal->elige("CXLIX"));
     }
 
     /**
