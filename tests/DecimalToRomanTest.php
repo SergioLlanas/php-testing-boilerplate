@@ -16,12 +16,12 @@ class DecimalToRomanTest extends TestCase
     {
         $DecimalToRoman = new DecimalToRoman();
 
-        $result = $DecimalToRoman->convierteNumero(123);
+        $result = $DecimalToRoman->convierteNumero(122);
 
-        $this->assertEquals("CXXIII", $result);
+        $this->assertEquals("CXXII", $result);
     }
 
-    /**
+    /*****
      * @test
      */
     public function se_ven_todos()
