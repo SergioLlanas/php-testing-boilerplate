@@ -11,21 +11,21 @@ class DecimalToRoman
 
     public function convierteNumero(int $numeroDecimal){
         if($this->es_caso_base($numeroDecimal)){
-            $this->calcula_caso_base($numeroDecimal);
+            return $this->calcula_caso_base($numeroDecimal);
         }else  if($numeroDecimal%10 == 0){
-            return $this->multiplo_de_diez_a_romano($numeroDecimal);
+            return $this->calcula_multiplo_de_diez($numeroDecimal);
         }else {
             $sig = $this->siguiente_mas_pequeño($numeroDecimal);
             //al sumar 1 al principio es como poner <=, si da 8, ponemos (<9)=(<=8)
             if ($numeroDecimal < (1 + $sig + (3 * $this->siguiente_mas_pequeño($sig)))) {
-                return $this->tipoSumar($numeroDecimal);
+                return $this->calcula_tipo_suma($numeroDecimal);
             } else {
-                return $this->tipoRestar($numeroDecimal);
+                return $this->calcula_tipo_resta($numeroDecimal);
             }
         }
     }
     private function es_caso_base(int $numeroDecimal){
-        if($numeroDecimal == 1  || $numeroDecimal == 5  || $numeroDecimal == 10  || $numeroDecimal == 50  || $numeroDecimal == 100  || $numeroDecimal == 500 || $numeroDecimal == 1000){
+        if(($numeroDecimal == 1) || ($numeroDecimal == 4) || ($numeroDecimal == 5) || ($numeroDecimal == 9)  || ($numeroDecimal == 10) || ($numeroDecimal == 40)  || ($numeroDecimal == 50) || ($numeroDecimal == 90) || ($numeroDecimal == 100)  || ($numeroDecimal == 500) || ($numeroDecimal == 1000)){
             return true;
         } else {
             return false;
@@ -34,6 +34,19 @@ class DecimalToRoman
 
     private function calcula_caso_base(int $numeroDecimal){
         //Usar arrays clave valor
+        $casosBase = array(
+            1 => "I",
+            4 => "IV",
+            5 => "V",
+            9 => "IX",
+            10 => "X",
+            40 => "XL",
+            50 => "X",
+            90 => "XC",
+            100 => "C",
+            500 => "D",
+            1000 => "M",
+        );
         if ($numeroDecimal == 1) {
             return "I";
         } else if ($numeroDecimal == 4) {
@@ -59,7 +72,7 @@ class DecimalToRoman
         }
     }
 
-    private function multiplo_de_diez_a_romano(int $numeroDecimal){
+    private function calcula_multiplo_de_diez(int $numeroDecimal){
         $cadena = "";
         if($numeroDecimal<50){
             for($j=0; $j<$numeroDecimal/10; $j++){
@@ -77,6 +90,39 @@ class DecimalToRoman
             $cadena="C";
             $numeroDecimal = $numeroDecimal -100;
             $cadena = $cadena . $this->convierteNumero($numeroDecimal);
+        }
+        return $cadena;
+    }
+
+    private function calcula_tipo_suma(int $numeroDecimal)
+    {
+        $cadena = "";
+        if($numeroDecimal<10){
+            while ($numeroDecimal > 0) {
+                $cadena = $cadena . $this->siguiente_mas_pequeño_en_romano($numeroDecimal);
+                $numeroDecimal = $this->restar_siguiente_mas_pequeño_al_actual($numeroDecimal);
+            }
+        } else{
+            $numeros = array();
+            while ($numeroDecimal != 0) {
+                $numeros[] = $numeroDecimal % 10;
+                $numeroDecimal = intval($numeroDecimal / 10); //Si dividimos 1234 / 10 nos da 123.4, pero queremos que no haya decimales. intval lo que hace es quitarle la parte decimal.
+            }
+            //$numeros = array_reverse($numeros);
+            for($i=0;$i<sizeof($numeros);$i++){
+                $cadena = $this->convierteNumero(pow(10,$i) *  $numeros[$i]) . $cadena;
+            }
+        }
+        return $cadena;
+    }
+
+    private function calcula_tipo_resta(int $int)
+    {
+        $cadena = "";
+        $numeros = $this->separa_numero($int);
+        //$numeros = array_reverse($numeros);
+        for($i=0;$i<sizeof($numeros);$i++){
+            $cadena = $this->convierteNumero(pow(10,$i) *  $numeros[$i]) . $cadena;
         }
         return $cadena;
     }
@@ -131,7 +177,6 @@ class DecimalToRoman
         }
     }
 
-    //Añadir que cuando ya es 0 acabe.
     private function restar_siguiente_mas_pequeño_al_actual(int $numeroDecimal)
     {
         if ($numeroDecimal < 1) {
@@ -160,30 +205,6 @@ class DecimalToRoman
         }
     }
 
-    private function tipoSumar(int $numeroDecimal)
-    {
-        $cadena = "";
-        if($numeroDecimal<10){
-            while ($numeroDecimal > 0) {
-                $cadena = $cadena . $this->siguiente_mas_pequeño_en_romano($numeroDecimal);
-                $numeroDecimal = $this->restar_siguiente_mas_pequeño_al_actual($numeroDecimal);
-            }
-        } else{
-            $numeros = array();
-            while ($numeroDecimal != 0) {
-                $numeros[] = $numeroDecimal % 10;
-                $numeroDecimal = intval($numeroDecimal / 10); //Si dividimos 1234 / 10 nos da 123.4, pero queremos que no haya decimales. intval lo que hace es quitarle la parte decimal.
-            }
-            //$numeros = array_reverse($numeros);
-            for($i=0;$i<sizeof($numeros);$i++){
-                $cadena = $this->convierteNumero(pow(10,$i) *  $numeros[$i]) . $cadena;
-            }
-        }
-        return $cadena;
-    }
-
-
-
     private function separa_numero(int $int)
     {
         $numeros = array();
@@ -193,17 +214,6 @@ class DecimalToRoman
         }
         //$numeros = array_reverse($numeros);
         return $numeros;
-    }
-
-    private function tipoRestar(int $int)
-    {
-        $cadena = "";
-        $numeros = $this->separa_numero($int);
-        //$numeros = array_reverse($numeros);
-        for($i=0;$i<sizeof($numeros);$i++){
-            $cadena = $this->convierteNumero(pow(10,$i) *  $numeros[$i]) . $cadena;
-        }
-        return $cadena;
     }
 
     public function comprobarTodos(){
